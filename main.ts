@@ -126,7 +126,7 @@ function startGame () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.speech)
     startSprite.setPosition(75, 90)
-    startSprite.say("press B to start", 3000)
+    startSprite.say("press B to start", 2000)
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     facingUp = false
@@ -136,9 +136,6 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function levelOne () {
     tiles.setTilemap(tilemap`level2`)
-    for (let index = 0; index < 1; index++) {
-        scene.centerCameraAt(16, -16)
-    }
     Character = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -157,6 +154,11 @@ function levelOne () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Player)
+    Character.setPosition(100, 90)
+    Character.setStayInScreen(true)
+    for (let index = 0; index < 1; index++) {
+        scene.centerCameraAt(Character.x, Character.y)
+    }
 }
 function startIsOver () {
     started = 1

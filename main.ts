@@ -2,6 +2,110 @@ namespace SpriteKind {
     export const speech = SpriteKind.create()
     export const test = SpriteKind.create()
 }
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    facingUp = true
+    facingLeft = false
+    facingRight = false
+    facingDown = false
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (facingUp == true) {
+        testAttack = sprites.create(img`
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f f f f f f f f f f f f f f f f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            `, SpriteKind.Projectile)
+        testAttack.setStayInScreen(false)
+        testAttack.setFlag(SpriteFlag.AutoDestroy, true)
+        testAttack.setVelocity(0, -50)
+        testAttack.setPosition(Character.x, Character.y)
+    }
+    if (facingDown == true) {
+        testAttack = sprites.create(img`
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f f f f f f f f f f f f f f f f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            `, SpriteKind.Projectile)
+        testAttack.setStayInScreen(false)
+        testAttack.setFlag(SpriteFlag.AutoDestroy, true)
+        testAttack.setVelocity(0, 50)
+        testAttack.setPosition(Character.x, Character.y)
+    }
+    if (facingRight == true) {
+        testAttack = sprites.create(img`
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f f f f f f f f f f f f f f f f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            `, SpriteKind.Projectile)
+        testAttack.setStayInScreen(false)
+        testAttack.setFlag(SpriteFlag.AutoDestroy, true)
+        testAttack.setVelocity(50, 0)
+        testAttack.setPosition(Character.x, Character.y)
+    }
+    if (facingLeft == true) {
+        testAttack = sprites.create(img`
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f f f f f f f f f f f f f f f f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            f . . . . . . . . . . . . . . f 
+            `, SpriteKind.Projectile)
+        testAttack.setStayInScreen(false)
+        testAttack.setFlag(SpriteFlag.AutoDestroy, true)
+        testAttack.setVelocity(-50, 0)
+        testAttack.setPosition(Character.x, Character.y)
+    }
+})
 function startGame () {
     startSprite = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -24,8 +128,17 @@ function startGame () {
     startSprite.setPosition(75, 90)
     startSprite.say("press B to start", 3000)
 }
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    facingUp = false
+    facingLeft = true
+    facingRight = false
+    facingDown = false
+})
 function levelOne () {
     tiles.setTilemap(tilemap`level2`)
+    for (let index = 0; index < 1; index++) {
+        scene.centerCameraAt(16, -16)
+    }
     Character = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -48,8 +161,25 @@ function levelOne () {
 function startIsOver () {
     started = 1
 }
-let Character: Sprite = null
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    facingUp = false
+    facingLeft = false
+    facingRight = true
+    facingDown = false
+})
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    facingUp = false
+    facingLeft = false
+    facingRight = false
+    facingDown = true
+})
 let startSprite: Sprite = null
+let Character: Sprite = null
+let testAttack: Sprite = null
+let facingDown = false
+let facingRight = false
+let facingLeft = false
+let facingUp = false
 let started = 0
 tiles.setTilemap(tilemap`level1`)
 startGame()

@@ -146,9 +146,9 @@ function levelOne () {
         . . 4 5 f . . . . . f 5 4 . . . 
         . . 2 4 5 5 5 5 5 5 5 4 2 . . . 
         . . f 2 4 4 4 4 4 4 4 2 f . . . 
-        . . . f 2 2 2 2 2 2 2 f . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . 8 f 2 2 2 2 2 2 2 f 8 . . . 
+        . . . 8 f f f f f f f 8 . . . . 
+        . . . . 8 8 8 8 8 8 8 . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -186,6 +186,30 @@ let started = 0
 tiles.setTilemap(tilemap`level1`)
 startGame()
 started = 0
+let mySprite = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Enemy)
+animation.runImageAnimation(
+mySprite,
+assets.animation`Idle_Demon`,
+200,
+true
+)
 forever(function () {
     if (controller.B.isPressed() && started == 0) {
         levelOne()

@@ -484,7 +484,7 @@
  * })
  */
 let TIREDNESS: Sprite = null
-for (let index = 0; index < 4; index++) {
+for (let index = 0; index < 8; index++) {
     TIREDNESS = sprites.create(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 

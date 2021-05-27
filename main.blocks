@@ -240,7 +240,7 @@ startIsOver()
 
 }
 controller.moveSprite(Character, 100, 100)
-})</comment><block type="pxt-on-start" id="!WBz,18;IrsV;`uUE`o~" x="0" y="0"><statement name="HANDLER"><block type="controls_repeat_ext" id="[lf7IvUOb?,Drhw1=%)n"><value name="TIMES"><shadow type="math_whole_number" id="I5[?6t}P95q97px.NNI^"><field name="NUM">4</field></shadow></value><statement name="DO"><block type="variables_set" id="7S.wU]L(g2%zOLjclByO"><field name="VAR" id="JQIWDhAX[12aCvv)b)TY">TIREDNESS</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate" id="*_RY@#J}0~5VkJ/V;1Bg"><value name="img"><shadow type="screen_image_picker" id="$JA%/p}VUly{CKdwSu;("><field name="img">img`
+})</comment><block type="pxt-on-start" id="!WBz,18;IrsV;`uUE`o~" x="0" y="0"><statement name="HANDLER"><block type="controls_repeat_ext" id="[lf7IvUOb?,Drhw1=%)n"><value name="TIMES"><shadow type="math_whole_number" id="I5[?6t}P95q97px.NNI^"><field name="NUM">8</field></shadow></value><statement name="DO"><block type="variables_set" id="7S.wU]L(g2%zOLjclByO"><field name="VAR" id="JQIWDhAX[12aCvv)b)TY">TIREDNESS</field><value name="VALUE"><shadow xmlns="http://www.w3.org/1999/xhtml" type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate" id="*_RY@#J}0~5VkJ/V;1Bg"><value name="img"><shadow type="screen_image_picker" id="$JA%/p}VUly{CKdwSu;("><field name="img">img`
 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 

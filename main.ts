@@ -1,221 +1,4137 @@
-namespace SpriteKind {
-    export const speech = SpriteKind.create()
-    export const test = SpriteKind.create()
-}
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    facingUp = true
-    facingLeft = false
-    facingRight = false
-    facingDown = false
-})
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (facingUp == true) {
-        testAttack = sprites.create(img`
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f f f f f f f f f f f f f f f f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            `, SpriteKind.Projectile)
-        testAttack.setStayInScreen(false)
-        testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-        testAttack.setVelocity(0, -50)
-        testAttack.setPosition(Character.x, Character.y)
-    }
-    if (facingDown == true) {
-        testAttack = sprites.create(img`
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f f f f f f f f f f f f f f f f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            `, SpriteKind.Projectile)
-        testAttack.setStayInScreen(false)
-        testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-        testAttack.setVelocity(0, 50)
-        testAttack.setPosition(Character.x, Character.y)
-    }
-    if (facingRight == true) {
-        testAttack = sprites.create(img`
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f f f f f f f f f f f f f f f f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            `, SpriteKind.Projectile)
-        testAttack.setStayInScreen(false)
-        testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-        testAttack.setVelocity(50, 0)
-        testAttack.setPosition(Character.x, Character.y)
-    }
-    if (facingLeft == true) {
-        testAttack = sprites.create(img`
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f f f f f f f f f f f f f f f f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            f . . . . . . . . . . . . . . f 
-            `, SpriteKind.Projectile)
-        testAttack.setStayInScreen(false)
-        testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-        testAttack.setVelocity(-50, 0)
-        testAttack.setPosition(Character.x, Character.y)
-    }
-})
-function startGame () {
-    startSprite = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.speech)
-    startSprite.setPosition(75, 90)
-    startSprite.say("press B to start", 2000)
-}
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    facingUp = false
-    facingLeft = true
-    facingRight = false
-    facingDown = false
-})
-function levelOne () {
-    tiles.setTilemap(tilemap`level2`)
-    Character = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . f . . . . . f . . . . . 
-        . . . f 2 f . . . f 2 f . . . . 
-        . . . f 2 f . . . f 2 f . . . . 
-        . . 5 f 2 f . . . f 2 f 5 . . . 
-        . . 4 5 f . . . . . f 5 4 . . . 
-        . . 2 4 5 5 5 5 5 5 5 4 2 . . . 
-        . . f 2 4 4 4 4 4 4 4 2 f . . . 
-        . . 8 f 2 2 2 2 2 2 2 f 8 . . . 
-        . . . 8 f f f f f f f 8 . . . . 
-        . . . . 8 8 8 8 8 8 8 . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+/**
+ * namespace SpriteKind {
+ * 
+ * export const speech = SpriteKind.create()
+ * 
+ * export const test = SpriteKind.create()
+ * 
+ * }
+ * 
+ * controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+ * 
+ * facingUp = true
+ * 
+ * facingLeft = false
+ * 
+ * facingRight = false
+ * 
+ * facingDown = false
+ * 
+ * })
+ * 
+ * scene.onOverlapTile(SpriteKind.Projectile, assets.tile`myTile22`, function (sprite, location) {
+ * 
+ * testAttack.destroy()
+ * 
+ * })
+ * 
+ * controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+ * 
+ * if (facingUp == true) {
+ * 
+ * testAttack = sprites.create(img`
+ * 
+ * . . . 2 2 2 . .
+ * 
+ * . . 2 4 4 4 2 .
+ * 
+ * . . 2 4 5 4 2 .
+ * 
+ * . . 2 4 5 4 2 .
+ * 
+ * . . . 2 4 2 . .
+ * 
+ * . . . 2 4 2 . .
+ * 
+ * . . . . 2 4 2 .
+ * 
+ * . . . . . 2 2 .
+ * 
+ * `, SpriteKind.Projectile)
+ * 
+ * testAttack.setStayInScreen(false)
+ * 
+ * testAttack.setFlag(SpriteFlag.AutoDestroy, true)
+ * 
+ * testAttack.setVelocity(0, -50)
+ * 
+ * testAttack.setPosition(Character.x, Character.y)
+ * 
+ * animation.runImageAnimation(
+ * 
+ * testAttack,
+ * 
+ * assets.animation`Idle_Demon`,
+ * 
+ * 50,
+ * 
+ * true
+ * 
+ * )
+ * 
+ * }
+ * 
+ * if (facingDown == true) {
+ * 
+ * testAttack = sprites.create(img`
+ * 
+ * . . . 2 2 2 . .
+ * 
+ * . . 2 4 4 4 2 .
+ * 
+ * . . 2 4 5 4 2 .
+ * 
+ * . . 2 4 5 4 2 .
+ * 
+ * . . . 2 4 2 . .
+ * 
+ * . . . 2 4 2 . .
+ * 
+ * . . . . 2 4 2 .
+ * 
+ * . . . . . 2 2 .
+ * 
+ * `, SpriteKind.Projectile)
+ * 
+ * testAttack.setStayInScreen(false)
+ * 
+ * testAttack.setFlag(SpriteFlag.AutoDestroy, true)
+ * 
+ * testAttack.setVelocity(0, 50)
+ * 
+ * testAttack.setPosition(Character.x, Character.y)
+ * 
+ * animation.runImageAnimation(
+ * 
+ * testAttack,
+ * 
+ * assets.animation`Idle_Demon`,
+ * 
+ * 50,
+ * 
+ * true
+ * 
+ * )
+ * 
+ * }
+ * 
+ * if (facingRight == true) {
+ * 
+ * testAttack = sprites.create(img`
+ * 
+ * . . . 2 2 2 . .
+ * 
+ * . . 2 4 4 4 2 .
+ * 
+ * . . 2 4 5 4 2 .
+ * 
+ * . . 2 4 5 4 2 .
+ * 
+ * . . . 2 4 2 . .
+ * 
+ * . . . 2 4 2 . .
+ * 
+ * . . . . 2 4 2 .
+ * 
+ * . . . . . 2 2 .
+ * 
+ * `, SpriteKind.Projectile)
+ * 
+ * testAttack.setStayInScreen(false)
+ * 
+ * testAttack.setFlag(SpriteFlag.AutoDestroy, true)
+ * 
+ * testAttack.setVelocity(50, 0)
+ * 
+ * testAttack.setPosition(Character.x, Character.y)
+ * 
+ * animation.runImageAnimation(
+ * 
+ * testAttack,
+ * 
+ * assets.animation`Idle_Demon`,
+ * 
+ * 50,
+ * 
+ * true
+ * 
+ * )
+ * 
+ * }
+ * 
+ * if (facingLeft == true) {
+ * 
+ * testAttack = sprites.create(img`
+ * 
+ * . . . 2 2 2 . .
+ * 
+ * . . 2 4 4 4 2 .
+ * 
+ * . . 2 4 5 4 2 .
+ * 
+ * . . 2 4 5 4 2 .
+ * 
+ * . . . 2 4 2 . .
+ * 
+ * . . . 2 4 2 . .
+ * 
+ * . . . . 2 4 2 .
+ * 
+ * . . . . . 2 2 .
+ * 
+ * `, SpriteKind.Projectile)
+ * 
+ * testAttack.setStayInScreen(false)
+ * 
+ * testAttack.setFlag(SpriteFlag.AutoDestroy, true)
+ * 
+ * testAttack.setVelocity(-50, 0)
+ * 
+ * testAttack.setPosition(Character.x, Character.y)
+ * 
+ * animation.runImageAnimation(
+ * 
+ * testAttack,
+ * 
+ * assets.animation`Idle_Demon`,
+ * 
+ * 50,
+ * 
+ * true
+ * 
+ * )
+ * 
+ * }
+ * 
+ * pause(100)
+ * 
+ * })
+ * 
+ * function startGame () {
+ * 
+ * startSprite = sprites.create(img`
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * `, SpriteKind.speech)
+ * 
+ * startSprite.setPosition(75, 90)
+ * 
+ * startSprite.say("press B to start", 2000)
+ * 
+ * }
+ * 
+ * controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+ * 
+ * facingUp = false
+ * 
+ * facingLeft = true
+ * 
+ * facingRight = false
+ * 
+ * facingDown = false
+ * 
+ * })
+ * 
+ * function levelOne () {
+ * 
+ * tiles.setTilemap(tilemap`level2`)
+ * 
+ * Character = sprites.create(img`
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . f . . . . . f . . . . .
+ * 
+ * . . . f 2 f . . . f 2 f . . . .
+ * 
+ * . . . f 2 f . . . f 2 f . . . .
+ * 
+ * . . 5 f 2 f . . . f 2 f 5 . . .
+ * 
+ * . . 4 5 f . . . . . f 5 4 . . .
+ * 
+ * . . 2 4 5 5 5 5 5 5 5 4 2 . . .
+ * 
+ * . . f 2 4 4 4 4 4 4 4 2 f . . .
+ * 
+ * . . 8 f 2 2 2 2 2 2 2 f 8 . . .
+ * 
+ * . . . 8 f f f f f f f 8 . . . .
+ * 
+ * . . . . 8 8 8 8 8 8 8 . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * `, SpriteKind.Player)
+ * 
+ * Character.setStayInScreen(true)
+ * 
+ * Character.setPosition(96, 92)
+ * 
+ * for (let index = 0; index < 1; index++) {
+ * 
+ * scene.centerCameraAt(Character.x, Character.y)
+ * 
+ * }
+ * 
+ * }
+ * 
+ * function startIsOver () {
+ * 
+ * started = 1
+ * 
+ * }
+ * 
+ * scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile20`, function (sprite, location) {
+ * 
+ * levelTwo()
+ * 
+ * })
+ * 
+ * controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+ * 
+ * facingUp = false
+ * 
+ * facingLeft = false
+ * 
+ * facingRight = true
+ * 
+ * facingDown = false
+ * 
+ * })
+ * 
+ * controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+ * 
+ * facingUp = false
+ * 
+ * facingLeft = false
+ * 
+ * facingRight = false
+ * 
+ * facingDown = true
+ * 
+ * })
+ * 
+ * scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
+ * 
+ * testAttack.destroy()
+ * 
+ * })
+ * 
+ * function levelTwo () {
+ * 
+ * Character.setPosition(96, 92)
+ * 
+ * demon = sprites.create(img`
+ * 
+ * f . . . . . . . . . . f . . . .
+ * 
+ * f f . . . . . . . . f f . . . .
+ * 
+ * f f f . . . . . . f f f . . . .
+ * 
+ * . f f f . . . . f f f . . . . .
+ * 
+ * . . f f f 2 2 f f f . . . . . .
+ * 
+ * . . 2 f f 2 2 f f 2 . . . . . .
+ * 
+ * . 2 2 2 2 2 2 2 2 2 2 . . . . .
+ * 
+ * . 2 2 2 f 2 2 f 2 2 2 . . . . .
+ * 
+ * . 2 2 2 2 2 2 2 2 2 2 . . . . .
+ * 
+ * . 2 2 2 f f f f 2 2 2 . . . . .
+ * 
+ * . . 2 f 2 2 2 2 f 2 . . . . . .
+ * 
+ * f . . . . f f . . . . f . . . .
+ * 
+ * . f f f f f f f f f f . . . . .
+ * 
+ * . . . . . f f . . . . . . . . .
+ * 
+ * . . . . f . . f . . . . . . . .
+ * 
+ * . . . . f . . f . . . . . . . .
+ * 
+ * `, SpriteKind.Enemy)
+ * 
+ * for (let index = 0; index < 1; index++) {
+ * 
+ * scene.centerCameraAt(Character.x, Character.y)
+ * 
+ * }
+ * 
+ * tiles.setTilemap(tilemap`level3`)
+ * 
+ * }
+ * 
+ * let demon: Sprite = null
+ * 
+ * let startSprite: Sprite = null
+ * 
+ * let Character: Sprite = null
+ * 
+ * let testAttack: Sprite = null
+ * 
+ * let facingDown = false
+ * 
+ * let facingRight = false
+ * 
+ * let facingLeft = false
+ * 
+ * let facingUp = false
+ * 
+ * let started = 0
+ * 
+ * tiles.setTilemap(tilemap`level1`)
+ * 
+ * startGame()
+ * 
+ * started = 0
+ * 
+ * let mySprite = sprites.create(img`
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * . . . . . . . . . . . . . . . .
+ * 
+ * `, SpriteKind.Enemy)
+ * 
+ * forever(function () {
+ * 
+ * if (controller.B.isPressed() && started == 0) {
+ * 
+ * levelOne()
+ * 
+ * startIsOver()
+ * 
+ * } else if (controller.A.isPressed() && started == 1) {
+ * 
+ * }
+ * 
+ * controller.moveSprite(Character, 100, 100)
+ * 
+ * })
+ */
+let TIREDNESS: Sprite = null
+for (let index = 0; index < 4; index++) {
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
         `, SpriteKind.Player)
-    Character.setPosition(100, 90)
-    Character.setStayInScreen(true)
-    for (let index = 0; index < 1; index++) {
-        scene.centerCameraAt(Character.x, Character.y)
-    }
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(27, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-27, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-42, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(42, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(98, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-98, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(84, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-84, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(3, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-3, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(18, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-18, 50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(27, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-27, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-42, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(42, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(98, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-98, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(84, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-84, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(3, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-3, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(18, -50)
+    TIREDNESS.setBounceOnWall(true)
+    TIREDNESS = sprites.create(img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `, SpriteKind.Player)
+    animation.runImageAnimation(
+    TIREDNESS,
+    [img`
+        a a a a a a a a a a a a a a a a a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a 2 a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 a a a 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 8 8 8 8 8 9 7 5 4 2 a 
+        a 2 4 5 7 9 9 9 9 9 9 9 7 5 4 2 a 
+        a 2 4 5 7 7 7 7 7 7 7 7 7 5 4 2 a 
+        a 2 4 5 5 5 5 5 5 5 5 5 5 5 4 2 a 
+        a 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 a 
+        a 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 a 
+        a a a a a a a a a a a a a a a a a 
+        `,img`
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 4 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a 2 2 2 a 8 9 7 5 4 2 
+        2 4 5 7 9 8 a a a a a 8 9 7 5 4 2 
+        2 4 5 7 9 8 8 8 8 8 8 8 9 7 5 4 2 
+        2 4 5 7 9 9 9 9 9 9 9 9 9 7 5 4 2 
+        2 4 5 7 7 7 7 7 7 7 7 7 7 7 5 4 2 
+        2 4 5 5 5 5 5 5 5 5 5 5 5 5 5 4 2 
+        2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        `,img`
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 5 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 4 4 4 2 a 8 9 7 5 4 
+        4 5 7 9 8 a 2 2 2 2 2 a 8 9 7 5 4 
+        4 5 7 9 8 a a a a a a a 8 9 7 5 4 
+        4 5 7 9 8 8 8 8 8 8 8 8 8 9 7 5 4 
+        4 5 7 9 9 9 9 9 9 9 9 9 9 9 7 5 4 
+        4 5 7 7 7 7 7 7 7 7 7 7 7 7 7 5 4 
+        4 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 4 
+        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+        `,img`
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 7 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 5 5 5 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 4 4 4 4 4 2 a 8 9 7 5 
+        5 7 9 8 a 2 2 2 2 2 2 2 a 8 9 7 5 
+        5 7 9 8 a a a a a a a a a 8 9 7 5 
+        5 7 9 8 8 8 8 8 8 8 8 8 8 8 9 7 5 
+        5 7 9 9 9 9 9 9 9 9 9 9 9 9 9 7 5 
+        5 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 5 
+        5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+        `,img`
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 9 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 7 7 7 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 5 5 5 5 5 4 2 a 8 9 7 
+        7 9 8 a 2 4 4 4 4 4 4 4 2 a 8 9 7 
+        7 9 8 a 2 2 2 2 2 2 2 2 2 a 8 9 7 
+        7 9 8 a a a a a a a a a a a 8 9 7 
+        7 9 8 8 8 8 8 8 8 8 8 8 8 8 8 9 7 
+        7 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 7 
+        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+        `,img`
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 8 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 9 9 9 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 7 7 7 7 7 5 4 2 a 8 9 
+        9 8 a 2 4 5 5 5 5 5 5 5 4 2 a 8 9 
+        9 8 a 2 4 4 4 4 4 4 4 4 4 2 a 8 9 
+        9 8 a 2 2 2 2 2 2 2 2 2 2 2 a 8 9 
+        9 8 a a a a a a a a a a a a a 8 9 
+        9 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 9 
+        9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 
+        `,img`
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 a 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 8 8 8 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 9 9 9 9 9 7 5 4 2 a 8 
+        8 a 2 4 5 7 7 7 7 7 7 7 5 4 2 a 8 
+        8 a 2 4 5 5 5 5 5 5 5 5 5 4 2 a 8 
+        8 a 2 4 4 4 4 4 4 4 4 4 4 4 2 a 8 
+        8 a 2 2 2 2 2 2 2 2 2 2 2 2 2 a 8 
+        8 a a a a a a a a a a a a a a a 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        `],
+    50,
+    true
+    )
+    TIREDNESS.setVelocity(-18, -50)
+    TIREDNESS.setBounceOnWall(true)
+    pause(200)
 }
-function startIsOver () {
-    started = 1
-}
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    facingUp = false
-    facingLeft = false
-    facingRight = true
-    facingDown = false
-})
-controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    facingUp = false
-    facingLeft = false
-    facingRight = false
-    facingDown = true
-})
-let startSprite: Sprite = null
-let Character: Sprite = null
-let testAttack: Sprite = null
-let facingDown = false
-let facingRight = false
-let facingLeft = false
-let facingUp = false
-let started = 0
-tiles.setTilemap(tilemap`level1`)
-startGame()
-started = 0
-let mySprite = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Enemy)
-animation.runImageAnimation(
-mySprite,
-assets.animation`Idle_Demon`,
-50,
-true
-)
-forever(function () {
-    if (controller.B.isPressed() && started == 0) {
-        levelOne()
-        startIsOver()
-    } else if (controller.A.isPressed() && started == 1) {
-    	
-    }
-    controller.moveSprite(Character, 100, 100)
-})

@@ -60,9 +60,9 @@ function levelOne () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Player)
     Character.setStayInScreen(true)
-    Character.setPosition(96, 92)
+    Character.setPosition(96, 86)
     for (let index = 0; index < 1; index++) {
-        scene.centerCameraAt(Character.x, Character.y)
+        scene.centerCameraAt(94, 92)
     }
 }
 function startIsOver () {
@@ -178,7 +178,7 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
     testAttack.destroy()
 })
 function levelTwo () {
-    Character.setPosition(96, 92)
+    Character.setPosition(94, 92)
     demon = sprites.create(img`
         f . . . . . . . . . . f . . . . 
         f f . . . . . . . . f f . . . . 
@@ -198,7 +198,7 @@ function levelTwo () {
         . . . . f . . f . . . . . . . . 
         `, SpriteKind.Enemy)
     for (let index = 0; index < 1; index++) {
-        scene.centerCameraAt(Character.x, Character.y)
+        scene.centerCameraAt(94, 92)
     }
     tiles.setTilemap(tilemap`level3`)
 }

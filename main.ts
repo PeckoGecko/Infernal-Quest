@@ -8,11 +8,16 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     facingRight = false
     facingDown = false
 })
+function damageTaken () {
+    healthBar.value += -1
+    Character.setPosition(Character.x, Character.x - 8)
+}
 scene.onOverlapTile(SpriteKind.Projectile, assets.tile`myTile22`, function (sprite, location) {
     testAttack.destroy()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile22`, function (sprite, location) {
     Character.destroy()
+    demon.destroy()
     levelOne()
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -73,13 +78,15 @@ function rangeAttack () {
                 `, SpriteKind.Projectile)
             testAttack.setStayInScreen(false)
             testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-            testAttack.setPosition(Character.x, Character.y)
+            testAttack.setPosition(Character.x - 8, Character.y - 8)
             animation.runImageAnimation(
             testAttack,
             assets.animation`fireball`,
-            100,
-            true
+            75,
+            false
             )
+            pause(700)
+            testAttack.destroy()
         }
         if (facingDown == true) {
             testAttack = sprites.create(img`
@@ -94,13 +101,12 @@ function rangeAttack () {
                 `, SpriteKind.Projectile)
             testAttack.setStayInScreen(false)
             testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-            testAttack.setVelocity(0, 50)
             testAttack.setPosition(Character.x, Character.y)
             animation.runImageAnimation(
             testAttack,
             assets.animation`fireball`,
             50,
-            true
+            false
             )
         }
         if (facingRight == true) {
@@ -116,13 +122,12 @@ function rangeAttack () {
                 `, SpriteKind.Projectile)
             testAttack.setStayInScreen(false)
             testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-            testAttack.setVelocity(50, 0)
             testAttack.setPosition(Character.x, Character.y)
             animation.runImageAnimation(
             testAttack,
             assets.animation`fireball`,
             50,
-            true
+            false
             )
         }
         if (facingLeft == true) {
@@ -138,13 +143,12 @@ function rangeAttack () {
                 `, SpriteKind.Projectile)
             testAttack.setStayInScreen(false)
             testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-            testAttack.setVelocity(-50, 0)
             testAttack.setPosition(Character.x, Character.y)
             animation.runImageAnimation(
             testAttack,
             assets.animation`fireball`,
             50,
-            true
+            false
             )
         }
         pause(100)
@@ -196,9 +200,13 @@ function levelTwo () {
     }
     tiles.setTilemap(tilemap`level3`)
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    damageTaken()
+})
 let demon: Sprite = null
-let Character: Sprite = null
 let testAttack: Sprite = null
+let Character: Sprite = null
+let healthBar: StatusBarSprite = null
 let facingDown = false
 let facingRight = false
 let facingLeft = false
@@ -224,13 +232,15 @@ let mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Enemy)
-let textSprite = textsprite.create("Press B to start")
+let textSprite: Sprite = textsprite.create("Press B to start")
 textSprite.setPosition(75, 90)
 forever(function () {
     if (controller.B.isPressed() && started == 0) {
         levelOne()
         startIsOver()
         textSprite.destroy()
+        healthBar = statusbars.create(15, 3, StatusBarKind.Health)
+        healthBar.attachToSprite(Character)
     } else if (controller.B.isPressed() && started == 1) {
         rangeAttack()
     }

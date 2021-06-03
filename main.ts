@@ -232,16 +232,17 @@ let mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Enemy)
-let textSprite: Sprite = textsprite.create("Press B to start")
+let textSprite = textsprite.create("Press B to start")
 textSprite.setPosition(75, 90)
 forever(function () {
     if (controller.B.isPressed() && started == 0) {
         levelOne()
         startIsOver()
+        facingLeft = true
         textSprite.destroy()
         healthBar = statusbars.create(15, 3, StatusBarKind.Health)
         healthBar.attachToSprite(Character)
-    } else if (controller.B.isPressed() && started == 1) {
+    } else if (controller.A.isPressed() && started == 1) {
         rangeAttack()
     }
     controller.moveSprite(Character, 100, 100)

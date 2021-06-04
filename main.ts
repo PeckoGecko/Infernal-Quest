@@ -35,24 +35,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function levelOne () {
     tiles.setTilemap(tilemap`level2`)
-    Character = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . e e e e . . . . . . 
-        . . . . . . e e d e . . . . . . 
-        . . . . . . f d d f . . . . . . 
-        . . . . . . d d d d . . . . . . 
-        . . . . . 8 8 8 8 8 8 . . . . . 
-        . . . . . 8 8 8 8 8 8 . . . . . 
-        . . . . . 8 8 8 8 8 8 . . . . . 
-        . . . . . d 7 8 7 7 d . . . . . 
-        . . . . . . 7 7 7 7 . . . . . . 
-        . . . . . . 7 . . 7 . . . . . . 
-        . . . . . . 7 . . 7 . . . . . . 
-        . . . . . f f . . f f . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
+    Character = sprites.create(assets.image`CharacterStill`, SpriteKind.Player)
     Character.setStayInScreen(true)
     Character.setPosition(96, 86)
     for (let index = 0; index < 1; index++) {
@@ -299,13 +282,13 @@ forever(function () {
     if (facingUp == true && started == 1) {
         character.loopFrames(
         Character,
-        assets.animation`Character_idle_up`,
+        assets.animation`CharacterUpIdle`,
         500,
         character.rule(Predicate.NotMoving, Predicate.FacingUp)
         )
         character.loopFrames(
         Character,
-        assets.animation`Character_Walking`,
+        assets.animation`CharacterUpWalking`,
         500,
         character.rule(Predicate.Moving, Predicate.FacingUp)
         )
@@ -313,81 +296,13 @@ forever(function () {
     if (facingDown == true && started == 1) {
         character.loopFrames(
         Character,
-        [img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . e e d e . . . . . . 
-            . . . . . . f d d f . . . . . . 
-            . . . . . . d d d d . . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . d 7 8 7 7 d . . . . . 
-            . . . . . . 7 7 7 7 . . . . . . 
-            . . . . . . 7 . . 7 . . . . . . 
-            . . . . . . 7 . . 7 . . . . . . 
-            . . . . . f f . . f f . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . e e d e . . . . . . 
-            . . . . . . f d d f . . . . . . 
-            . . . . . . d d d d . . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . d 7 8 7 7 d . . . . . 
-            . . . . . . 7 7 7 7 . . . . . . 
-            . . . . . . 7 . . 7 . . . . . . 
-            . . . . . f f . . f f . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `],
+        assets.animation`CharacterDownIdle`,
         500,
         character.rule(Predicate.NotMoving, Predicate.FacingDown)
         )
         character.loopFrames(
         Character,
-        [img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . e e d e . . . . . . 
-            . . . . . . f d d f . . . . . . 
-            . . . . . . d d d d . . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . d 7 8 7 7 d . . . . . 
-            . . . . . . 7 7 7 7 . . . . . . 
-            . . . . . . 7 . . 7 . . . . . . 
-            . . . . . f f . . 7 . . . . . . 
-            . . . . . . . . . f f . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . e e d e . . . . . . 
-            . . . . . . f d d f . . . . . . 
-            . . . . . . d d d d . . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . d 7 8 7 7 d . . . . . 
-            . . . . . . 7 7 7 7 . . . . . . 
-            . . . . . . 7 . . 7 . . . . . . 
-            . . . . . . 7 . . f f . . . . . 
-            . . . . . f f . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `],
+        assets.animation`CharacterDownWalking`,
         500,
         character.rule(Predicate.Moving, Predicate.FacingDown)
         )
@@ -395,81 +310,13 @@ forever(function () {
     if (facingLeft == true && started == 1) {
         character.loopFrames(
         Character,
-        [img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . f d d e . . . . . . 
-            . . . . . . d d d d . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . d d . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . f f . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . f d d d . . . . . . 
-            . . . . . . d d d d . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . d d . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . f f . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `],
+        assets.animation`CharacterRightIdle`,
         500,
         character.rule(Predicate.NotMoving, Predicate.FacingRight)
         )
         character.loopFrames(
         Character,
-        [img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . f d d e . . . . . . 
-            . . . . . . d d d d . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . d d . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . f f . . . . . . . 
-            . . . . . . . f f . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . e e e e . . . . . . 
-            . . . . . . f d d e . . . . . . 
-            . . . . . . d d d d . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . 8 8 . . . . . . . 
-            . . . . . . . d d . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . f f . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `],
+        assets.animation`CharacterRightWalking`,
         500,
         character.rule(Predicate.Moving, Predicate.FacingRight)
         )
@@ -477,47 +324,13 @@ forever(function () {
     if (facingRight == true && started == 1) {
         character.loopFrames(
         Character,
-        [img`
-            7 7 7 7 . . . . . . . . . . . . 
-            . . . 7 . . . . . . . . . . . . 
-            . . 7 7 7 7 . . . . . . . . . . 
-            . . . . 7 . . . . . . . . . . . 
-            . . . 7 7 . . . . . . . . . . . 
-            . . 7 7 7 7 7 7 7 . . . . . . . 
-            . . . . . . 7 7 . . . . . . . . 
-            . . . . . . 7 7 7 7 7 7 . . . . 
-            . . . . . . . . . 7 . . . . . . 
-            . . . . . . . . . 7 7 7 7 . . . 
-            . . . . . . . . . . . 7 7 . . . 
-            . . . . . . . . . . . 7 7 7 7 . 
-            . . . . . . . . . . . . . . 7 7 
-            . . . . . . . . . . . . . . . 7 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `],
+        assets.animation`CharacterLeftIdle`,
         500,
         character.rule(Predicate.NotMoving, Predicate.FacingLeft)
         )
         character.loopFrames(
         Character,
-        [img`
-            . . . . . . . . . . . . . . . . 
-            3 3 3 3 3 . . . . . . . . . . . 
-            . . 3 3 . . . . . . . . . . . . 
-            . . 3 3 3 3 3 3 3 . . . . . . . 
-            . . . . . . . 3 . . . . . . . . 
-            . . . . . . 3 3 . . . . . . . . 
-            . . . . . . . . 3 3 . . . . . . 
-            . . . . . . . . 3 . . . . . . . 
-            . . . . . . . . 3 3 3 . . . . . 
-            . . . . . . . . . 3 3 . . . . . 
-            . . . . . . . . . 3 3 3 . . . . 
-            . . . . . . . . . . . . 3 3 . . 
-            . . . . . . . . . . . 3 3 3 . . 
-            . . . . . . . . . . . . . . 3 . 
-            . . . . . . . . . . . . . . 3 3 
-            . . . . . . . . . . . . . . . . 
-            `],
+        assets.animation`CharacterLeftWalking`,
         500,
         character.rule(Predicate.Moving, Predicate.FacingLeft)
         )

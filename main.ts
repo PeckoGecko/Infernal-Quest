@@ -1,20 +1,27 @@
 namespace SpriteKind {
     export const speech = SpriteKind.create()
     export const test = SpriteKind.create()
+    export const downAttack = SpriteKind.create()
+    export const upAttack = SpriteKind.create()
+    export const rightAttack = SpriteKind.create()
+    export const leftAttack = SpriteKind.create()
 }
+scene.onOverlapTile(SpriteKind.downAttack, assets.tile`myTile15`, function (sprite, location) {
+    downAttack.destroy()
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     facingUp = true
     facingLeft = false
     facingRight = false
     facingDown = false
 })
+scene.onHitWall(SpriteKind.downAttack, function (sprite, location) {
+    downAttack.destroy()
+})
 function damageTaken () {
     healthBar.value += -1
-    Character.setPosition(Character.x, Character.x - 8)
+    Character.setPosition(Character.x, Character.x + 8)
 }
-scene.onOverlapTile(SpriteKind.Projectile, assets.tile`myTile22`, function (sprite, location) {
-    testAttack.destroy()
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile22`, function (sprite, location) {
     Character.destroy()
     demon.destroy()
@@ -52,13 +59,19 @@ function levelOne () {
         scene.centerCameraAt(96, 92)
     }
 }
+scene.onHitWall(SpriteKind.upAttack, function (sprite, location) {
+    upAttack.destroy()
+})
+scene.onOverlapTile(SpriteKind.upAttack, assets.tile`myTile22`, function (sprite, location) {
+    upAttack.destroy()
+})
 function startIsOver () {
     started = 1
 }
 function rangeAttack () {
     timer.throttle("action", 500, function () {
         if (facingUp == true) {
-            testAttack = sprites.create(img`
+            upAttack = sprites.create(img`
                 . . . . . . . . 
                 . . . . . . . . 
                 . . . . 4 . . . 
@@ -75,83 +88,114 @@ function rangeAttack () {
                 . . . f f . . . 
                 . . . f f . . . 
                 . . . . . . . . 
-                `, SpriteKind.Projectile)
-            testAttack.setStayInScreen(false)
-            testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-            testAttack.setPosition(Character.x - 8, Character.y - 8)
+                `, SpriteKind.upAttack)
+            upAttack.setStayInScreen(false)
+            upAttack.setFlag(SpriteFlag.AutoDestroy, true)
+            upAttack.setPosition(Character.x - 8, Character.y - 8)
             animation.runImageAnimation(
-            testAttack,
+            upAttack,
+            assets.animation`fireball`,
+            75,
+            false
+            )
+            blockMenu.setControlsEnabled(false)
+            pause(700)
+            blockMenu.setControlsEnabled(true)
+            upAttack.destroy()
+        }
+        if (facingDown == true) {
+            downAttack = sprites.create(img`
+                . . . . . . . . 
+                . . . . . . . . 
+                . . . . 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . f . 2 4 . f . 
+                . f f f f f f . 
+                . . . f f . . . 
+                . . . f f . . . 
+                . . . f f . . . 
+                . . . . . . . . 
+                `, SpriteKind.downAttack)
+            downAttack.setStayInScreen(false)
+            downAttack.setFlag(SpriteFlag.AutoDestroy, true)
+            downAttack.setPosition(Character.x - 8, Character.y - 8)
+            animation.runImageAnimation(
+            downAttack,
             assets.animation`fireball`,
             75,
             false
             )
             pause(700)
-            testAttack.destroy()
-        }
-        if (facingDown == true) {
-            testAttack = sprites.create(img`
-                . . . 2 2 2 . . 
-                . . 2 4 4 4 2 . 
-                . . 2 4 5 4 2 . 
-                . . 2 4 5 4 2 . 
-                . . . 2 4 2 . . 
-                . . . 2 4 2 . . 
-                . . . . 2 4 2 . 
-                . . . . . 2 2 . 
-                `, SpriteKind.Projectile)
-            testAttack.setStayInScreen(false)
-            testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-            testAttack.setPosition(Character.x, Character.y)
-            animation.runImageAnimation(
-            testAttack,
-            assets.animation`fireball`,
-            50,
-            false
-            )
+            downAttack.destroy()
         }
         if (facingRight == true) {
-            testAttack = sprites.create(img`
-                . . . 2 2 2 . . 
-                . . 2 4 4 4 2 . 
-                . . 2 4 5 4 2 . 
-                . . 2 4 5 4 2 . 
-                . . . 2 4 2 . . 
-                . . . 2 4 2 . . 
-                . . . . 2 4 2 . 
-                . . . . . 2 2 . 
-                `, SpriteKind.Projectile)
-            testAttack.setStayInScreen(false)
-            testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-            testAttack.setPosition(Character.x, Character.y)
+            attackingRight = sprites.create(img`
+                . . . . . . . . 
+                . . . . . . . . 
+                . . . . 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . f . 2 4 . f . 
+                . f f f f f f . 
+                . . . f f . . . 
+                . . . f f . . . 
+                . . . f f . . . 
+                . . . . . . . . 
+                `, SpriteKind.rightAttack)
+            attackingRight.setStayInScreen(false)
+            attackingRight.setFlag(SpriteFlag.AutoDestroy, true)
+            attackingRight.setPosition(Character.x - 8, Character.y - 5)
             animation.runImageAnimation(
-            testAttack,
+            attackingRight,
             assets.animation`fireball`,
-            50,
+            75,
             false
             )
+            pause(700)
+            attackingRight.destroy()
         }
         if (facingLeft == true) {
-            testAttack = sprites.create(img`
-                . . . 2 2 2 . . 
-                . . 2 4 4 4 2 . 
-                . . 2 4 5 4 2 . 
-                . . 2 4 5 4 2 . 
-                . . . 2 4 2 . . 
-                . . . 2 4 2 . . 
-                . . . . 2 4 2 . 
-                . . . . . 2 2 . 
-                `, SpriteKind.Projectile)
-            testAttack.setStayInScreen(false)
-            testAttack.setFlag(SpriteFlag.AutoDestroy, true)
-            testAttack.setPosition(Character.x, Character.y)
+            attackingLeft = sprites.create(img`
+                . . . . . . . . 
+                . . . . . . . . 
+                . . . . 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . . . 2 4 . . . 
+                . f . 2 4 . f . 
+                . f f f f f f . 
+                . . . f f . . . 
+                . . . f f . . . 
+                . . . f f . . . 
+                . . . . . . . . 
+                `, SpriteKind.leftAttack)
+            attackingLeft.setStayInScreen(false)
+            attackingLeft.setFlag(SpriteFlag.AutoDestroy, true)
+            attackingLeft.setPosition(Character.x - 8, Character.y - 5)
             animation.runImageAnimation(
-            testAttack,
+            attackingLeft,
             assets.animation`fireball`,
-            50,
+            75,
             false
             )
+            pause(700)
+            attackingLeft.destroy()
         }
-        pause(100)
     })
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile20`, function (sprite, location) {
@@ -163,17 +207,17 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     facingRight = true
     facingDown = false
 })
+sprites.onOverlap(SpriteKind.upAttack, SpriteKind.Enemy, function (sprite, otherSprite) {
+    demon.destroy()
+})
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     facingUp = false
     facingLeft = false
     facingRight = false
     facingDown = true
 })
-scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
-    testAttack.destroy()
-})
-scene.onOverlapTile(SpriteKind.Projectile, assets.tile`myTile15`, function (sprite, location) {
-    testAttack.destroy()
+scene.onOverlapTile(SpriteKind.upAttack, assets.tile`myTile15`, function (sprite, location) {
+    upAttack.destroy()
 })
 function levelTwo () {
     Character.setPosition(150, 86)
@@ -200,17 +244,23 @@ function levelTwo () {
     }
     tiles.setTilemap(tilemap`level3`)
 }
+scene.onOverlapTile(SpriteKind.downAttack, assets.tile`myTile22`, function (sprite, location) {
+    downAttack.destroy()
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     damageTaken()
 })
+let attackingLeft: Sprite = null
+let attackingRight: Sprite = null
+let upAttack: Sprite = null
 let demon: Sprite = null
-let testAttack: Sprite = null
 let Character: Sprite = null
 let healthBar: StatusBarSprite = null
 let facingDown = false
 let facingRight = false
 let facingLeft = false
 let facingUp = false
+let downAttack: Sprite = null
 let started = 0
 tiles.setTilemap(tilemap`level1`)
 started = 0
@@ -232,7 +282,7 @@ let mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Enemy)
-let textSprite = textsprite.create("Press B to start")
+let textSprite = textsprite.create("Press B to start", 0, 2)
 textSprite.setPosition(75, 90)
 forever(function () {
     if (controller.B.isPressed() && started == 0) {
@@ -246,16 +296,22 @@ forever(function () {
         rangeAttack()
     }
     controller.moveSprite(Character, 100, 100)
-    if (facingUp == true) {
-        animation.runImageAnimation(
+    if (facingUp == true && started == 1) {
+        character.loopFrames(
         Character,
-        assets.animation`Character_Idle`,
+        assets.animation`Character_idle_up`,
         500,
-        true
+        character.rule(Predicate.NotMoving, Predicate.FacingUp)
+        )
+        character.loopFrames(
+        Character,
+        assets.animation`Character_Walking`,
+        500,
+        character.rule(Predicate.Moving, Predicate.FacingUp)
         )
     }
-    if (facingDown == true) {
-        animation.runImageAnimation(
+    if (facingDown == true && started == 1) {
+        character.loopFrames(
         Character,
         [img`
             . . . . . . . . . . . . . . . . 
@@ -276,35 +332,75 @@ forever(function () {
             . . . . . . . . . . . . . . . . 
             `,img`
             . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             . . . . . . e e e e . . . . . . 
             . . . . . . e e d e . . . . . . 
             . . . . . . f d d f . . . . . . 
-            . . . . . 8 d d d d 8 . . . . . 
+            . . . . . . d d d d . . . . . . 
             . . . . . 8 8 8 8 8 8 . . . . . 
             . . . . . 8 8 8 8 8 8 . . . . . 
-            . . . . . d 8 8 8 8 d . . . . . 
-            . . . . . . 7 8 7 7 . . . . . . 
+            . . . . . 8 8 8 8 8 8 . . . . . 
+            . . . . . d 7 8 7 7 d . . . . . 
             . . . . . . 7 7 7 7 . . . . . . 
             . . . . . . 7 . . 7 . . . . . . 
             . . . . . f f . . f f . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
+            `],
+        500,
+        character.rule(Predicate.NotMoving, Predicate.FacingDown)
+        )
+        character.loopFrames(
+        Character,
+        [img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . e e e e . . . . . . 
+            . . . . . . e e d e . . . . . . 
+            . . . . . . f d d f . . . . . . 
+            . . . . . . d d d d . . . . . . 
+            . . . . . 8 8 8 8 8 8 . . . . . 
+            . . . . . 8 8 8 8 8 8 . . . . . 
+            . . . . . 8 8 8 8 8 8 . . . . . 
+            . . . . . d 7 8 7 7 d . . . . . 
+            . . . . . . 7 7 7 7 . . . . . . 
+            . . . . . . 7 . . 7 . . . . . . 
+            . . . . . f f . . 7 . . . . . . 
+            . . . . . . . . . f f . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . e e e e . . . . . . 
+            . . . . . . e e d e . . . . . . 
+            . . . . . . f d d f . . . . . . 
+            . . . . . . d d d d . . . . . . 
+            . . . . . 8 8 8 8 8 8 . . . . . 
+            . . . . . 8 8 8 8 8 8 . . . . . 
+            . . . . . 8 8 8 8 8 8 . . . . . 
+            . . . . . d 7 8 7 7 d . . . . . 
+            . . . . . . 7 7 7 7 . . . . . . 
+            . . . . . . 7 . . 7 . . . . . . 
+            . . . . . . 7 . . f f . . . . . 
+            . . . . . f f . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `],
         500,
-        true
+        character.rule(Predicate.Moving, Predicate.FacingDown)
         )
     }
-    if (facingLeft == true) {
-        animation.runImageAnimation(
+    if (facingLeft == true && started == 1) {
+        character.loopFrames(
         Character,
         [img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . e e e e . . . . . . 
             . . . . . . e e e e . . . . . . 
-            . . . . . . f d d d . . . . . . 
+            . . . . . . f d d e . . . . . . 
             . . . . . . d d d d . . . . . . 
             . . . . . . . 8 8 . . . . . . . 
             . . . . . . . 8 8 . . . . . . . 
@@ -313,8 +409,8 @@ forever(function () {
             . . . . . . . 7 7 . . . . . . . 
             . . . . . . . 7 7 . . . . . . . 
             . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
             . . . . . . . f f . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `,img`
             . . . . . . . . . . . . . . . . 
@@ -330,23 +426,21 @@ forever(function () {
             . . . . . . . d d . . . . . . . 
             . . . . . . . 7 7 . . . . . . . 
             . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
             . . . . . . . f f . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `],
         500,
-        true
+        character.rule(Predicate.NotMoving, Predicate.FacingRight)
         )
-    }
-    if (facingRight == true) {
-        animation.runImageAnimation(
+        character.loopFrames(
         Character,
         [img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . e e e e . . . . . . 
             . . . . . . e e e e . . . . . . 
-            . . . . . . d d d f . . . . . . 
+            . . . . . . f d d e . . . . . . 
             . . . . . . d d d d . . . . . . 
             . . . . . . . 8 8 . . . . . . . 
             . . . . . . . 8 8 . . . . . . . 
@@ -354,17 +448,16 @@ forever(function () {
             . . . . . . . d d . . . . . . . 
             . . . . . . . 7 7 . . . . . . . 
             . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
-            . . . . . . . 7 7 . . . . . . . 
             . . . . . . . f f . . . . . . . 
+            . . . . . . . f f . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `,img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
             . . . . . . e e e e . . . . . . 
             . . . . . . e e e e . . . . . . 
-            . . . . . . d d d f . . . . . . 
+            . . . . . . f d d e . . . . . . 
             . . . . . . d d d d . . . . . . 
             . . . . . . . 8 8 . . . . . . . 
             . . . . . . . 8 8 . . . . . . . 
@@ -375,9 +468,58 @@ forever(function () {
             . . . . . . . 7 7 . . . . . . . 
             . . . . . . . f f . . . . . . . 
             . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             `],
         500,
-        true
+        character.rule(Predicate.Moving, Predicate.FacingRight)
+        )
+    }
+    if (facingRight == true && started == 1) {
+        character.loopFrames(
+        Character,
+        [img`
+            7 7 7 7 . . . . . . . . . . . . 
+            . . . 7 . . . . . . . . . . . . 
+            . . 7 7 7 7 . . . . . . . . . . 
+            . . . . 7 . . . . . . . . . . . 
+            . . . 7 7 . . . . . . . . . . . 
+            . . 7 7 7 7 7 7 7 . . . . . . . 
+            . . . . . . 7 7 . . . . . . . . 
+            . . . . . . 7 7 7 7 7 7 . . . . 
+            . . . . . . . . . 7 . . . . . . 
+            . . . . . . . . . 7 7 7 7 . . . 
+            . . . . . . . . . . . 7 7 . . . 
+            . . . . . . . . . . . 7 7 7 7 . 
+            . . . . . . . . . . . . . . 7 7 
+            . . . . . . . . . . . . . . . 7 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `],
+        500,
+        character.rule(Predicate.NotMoving, Predicate.FacingLeft)
+        )
+        character.loopFrames(
+        Character,
+        [img`
+            . . . . . . . . . . . . . . . . 
+            3 3 3 3 3 . . . . . . . . . . . 
+            . . 3 3 . . . . . . . . . . . . 
+            . . 3 3 3 3 3 3 3 . . . . . . . 
+            . . . . . . . 3 . . . . . . . . 
+            . . . . . . 3 3 . . . . . . . . 
+            . . . . . . . . 3 3 . . . . . . 
+            . . . . . . . . 3 . . . . . . . 
+            . . . . . . . . 3 3 3 . . . . . 
+            . . . . . . . . . 3 3 . . . . . 
+            . . . . . . . . . 3 3 3 . . . . 
+            . . . . . . . . . . . . 3 3 . . 
+            . . . . . . . . . . . 3 3 3 . . 
+            . . . . . . . . . . . . . . 3 . 
+            . . . . . . . . . . . . . . 3 3 
+            . . . . . . . . . . . . . . . . 
+            `],
+        500,
+        character.rule(Predicate.Moving, Predicate.FacingLeft)
         )
     }
 })
